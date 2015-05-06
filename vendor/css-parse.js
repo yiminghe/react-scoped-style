@@ -4,7 +4,7 @@
 // https://github.com/visionmedia/css-parse/pull/49#issuecomment-30088027
 var commentre = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g
 
-module.exports = function(css, options){
+module.exports = function (css, options) {
   options = options || {};
 
   /**
@@ -30,8 +30,8 @@ module.exports = function(css, options){
    */
 
   function position() {
-    var start = { line: lineno, column: column };
-    return function(node){
+    var start = {line: lineno, column: column};
+    return function (node) {
       node.position = new Position(start);
       whitespace();
       return node;
@@ -44,7 +44,7 @@ module.exports = function(css, options){
 
   function Position(start) {
     this.start = start;
-    this.end = { line: lineno, column: column };
+    this.end = {line: lineno, column: column};
     this.source = options.source;
   }
 
@@ -173,7 +173,7 @@ module.exports = function(css, options){
     while ("" != css.charAt(i) && ('*' != css.charAt(i) || '/' != css.charAt(i + 1))) ++i;
     i += 2;
 
-    if ("" === css.charAt(i-1)) {
+    if ("" === css.charAt(i - 1)) {
       return error('End of comment missing');
     }
 
@@ -200,11 +200,11 @@ module.exports = function(css, options){
      * http://ostermiller.org/findcomment.html */
     return trim(m[0])
       .replace(/\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*\/+/g, '')
-      .replace(/(?:"[^"]*"|'[^']*')/g, function(m) {
+      .replace(/(?:"[^"]*"|'[^']*')/g, function (m) {
         return m.replace(/,/g, '\u200C');
       })
       .split(/\s*(?![^(]*\)),\s*/)
-      .map(function(s) {
+      .map(function (s) {
         return s.replace(/\u200C/g, ',');
       });
   }
@@ -515,11 +515,11 @@ module.exports = function(css, options){
 
   function _compileAtrule(name) {
     var re = new RegExp('^@' + name + '\\s*([^;]+);');
-    return function() {
+    return function () {
       var pos = position();
       var m = match(re);
       if (!m) return;
-      var ret = { type: name };
+      var ret = {type: name};
       ret[name] = m[1].trim();
       return pos(ret);
     }
@@ -585,7 +585,9 @@ function addParent(obj, parent) {
   for (var k in obj) {
     var value = obj[k];
     if (Array.isArray(value)) {
-      value.forEach(function(v) { addParent(v, childParent); });
+      value.forEach(function (v) {
+        addParent(v, childParent);
+      });
     } else if (value && typeof value === 'object') {
       addParent(value, childParent);
     }

@@ -1,4 +1,4 @@
 module.exports = {
   transformElement: require('./lib/transform'),
-  parseCss: require('./lib/css-parse')
+  parseCss: require('./vendor/css-parse')
 };
