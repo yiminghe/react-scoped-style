@@ -1,31 +1,31 @@
 language: node_js
-
 notifications:
   email:
   - yiminghe@gmail.com
-
 node_js:
 - 0.12
-
 before_install:
 - |
-    if ! git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(\.md$)|(^(docs|examples))/'
-    then
-      echo "Only docs were updated, stopping build process."
-      exit
-    fi
-    npm install mocha-phantomjs -g
-    phantomjs --version
+  if ! git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(\.md$)|(^(docs|examples))/'
+  then
+    echo "Only docs were updated, stopping build process."
+    exit
+  fi
+  npm install mocha-phantomjs -g
+  phantomjs --version
 script:
 - |
-    if [ "$TEST_TYPE" = test ]; then
-      npm test
-    else
-      npm run $TEST_TYPE
-    fi
+  if [ "$TEST_TYPE" = test ]; then
+    npm test
+  else
+    npm run $TEST_TYPE
+  fi
 env:
   matrix:
   - TEST_TYPE=lint
   - TEST_TYPE=browser-test
   - TEST_TYPE=browser-test-cover
   - TEST_TYPE=saucelabs
+  global:
+  - secure: p+OTitrqtXQxb5M5/gOIkldS1pMWHTKeqP1l313O3Hr73ObO9WDqcFlVLb8Ob3NKgrc0u/Aq9sMvGEiQTQGYqJ/+QZUJrAsM9NsPk7t8txkKapujV4DPTnOLex5sk9BvPaspSMp+d4m3SKhX+56WCuQx37HSmVEVKPyJ0qqWFOafsS3F7LZ8kfJk3JoTh9peY0wPkUSz9GWa6Qmthy7nEcjLP0WSEoLRTVBiAxVOdCoaGtTF5rE+6BZ/dNw5xthxmz+dWHUjlC+RIwNvu+1Up0UxSTE0y0Q2clM+pPrSf1FsGZhaQBunwnuzYq/5Mt50pANA1+/X6nUfMwny6uBSfY7IUXndhaYf7LZ0LZydq4vMxLZD4yGJNmob/n/Wcd6sKEuM66H6i9sjLEs3AnyBM9y/eiCk5IQu3quhPqNOWRiSq7uKNPbyC2Ogm9tAtlx6RF164+o/8HHeNCc76Iy0FdqeKA5pfofhgWa9e0ynwTIuZuGf0CYkx0S4zOjB6rGAaLILp2BKd8dYhiHlRrRyVyd1OMBsUd4xaaeonSLIWwe0iwElZLW0OqmErsJCh7gp3ltx2nNG61jO3sToghFAbubtA99lf6p2AKI4+eukZnPHZuZ98WQljro4KuXvBbWlocra4H3QMHcBIqqL2UkhHw4yHcTLrfK233MuV2qWeT4=
+  - secure: bnTeSjxN0gx00qJtG4gc5rgtpCZw5qqY0UrSeSt8GWGBwTYjS0LCzc3PGC2FEj/YMLZHYIDi7kXLLJy9rK6y5zt/LWRre/zFusMVVltO6CCEWfrVgY2o415noE6ObRbUvU9NFaE4Fls7rCy4u0OL1TDmdcpFnnbPDbVOSzdWpUTPvecS/SDozWpFLmfF9rtG6TfyV8t4f3mjNjd+VNSzLdDkODk3glR+YP+FnofVa+CtLOTmhrgiUZYqyYlBqfaVuqbR1US7H3OFyROhjeeIhqKPnaSG6lPOqyVeTctFcj7nTdcZKVzI5HqvWkFOSMJW5CDKjm+/oIv+XXangZCPVuRfLlAiavESw3/W6v12q5qMDLm7LB3FhMpB3lUG/c7eLEDROc4b1aXFMpYxiMCeHvRcM8x3H1Ei7u1KdOYHC4muVH3pFxiB1oAyxsAl3sq/Tg4JkvnbL2GnGDhm6uZW6VUfnsR1xn5zzD0EZxpSJ/gUZRUBxtrSAyZkc191LBjWTkJEgACdLeu5pUnYfeVu3QlJz0Egnf4HZn6KS9IzFyXhBhfZQNW/MHPui7FtCEQlbFMnjIejs5SSGHFilSiYPYg5m/90bQDDZITr46EtyCtvyLq4ddVwbnJ5qXnQHYCF+qws3hGOsTQsMIUUvD0zupBTk0NPvk+cRuVMSekyr0I=

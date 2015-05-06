@@ -1,7 +1,7 @@
 # react-scoped-style
 ---
 
-scope react element by transform external css into inline styles
+scope react element by transform external style into inline styles
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
