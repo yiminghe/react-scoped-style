@@ -9,9 +9,9 @@ webpackJsonp([0,1],[
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var scopedStyle = __webpack_require__(3);
+	var ScopedStyle = __webpack_require__(3);
 	var React = __webpack_require__(2);
-	var css = scopedStyle.parseCss(("\n.test {\n  color:red;\n  zoom:1.5;\n}\ndiv>span{\n  color:green;\n  zoom:1.5;\n}\n"
+	var style = ScopedStyle.parseStyle(("\n.test {\n  color:red;\n  zoom:1.5;\n}\ndiv>span{\n  color:green;\n  zoom:1.5;\n}\n"
 	
 	
 	
@@ -23,18 +23,30 @@ webpackJsonp([0,1],[
 	));
 	
 	var html = React.createElement("div", null, 
-	  React.createElement("h1", {className: "test"}, "scope react element by transform external style into inline styles"), 
-	  
-	    scopedStyle.transformElement(React.createElement("div", null, 
+	  React.createElement("p", {className: "test"}, "scope react element by transform external style into inline styles"), 
+	  React.createElement("p", null, 
+	    React.createElement("a", {href: "https://github.com/react-component/react-scoped-style"}, "repo")
+	  ), 
+	
+	  React.createElement(ScopedStyle, {style: style}, 
+	    React.createElement("div", null, 
 	      React.createElement("span", null, "green zoom"), 
-	      React.createElement("span", {style: {color:'blue'}}, "blue zoom"), 
+	      React.createElement("span", {style: {color: 'blue'}}, "blue zoom"), 
 	      React.createElement("p", null, 
 	        React.createElement("span", null, "black"), 
 	        React.createElement("span", null, "  -   "), 
-	        React.createElement("a", {className: "test a"}, "red zoom")
+	        React.createElement("a", {className: "test"}, "red zoom")
+	      ), 
+	
+	      React.createElement(ScopedStyle, null, 
+	        React.createElement("a", {className: "test"}, "black isolate")
+	      ), 
+	
+	      React.createElement(ScopedStyle, {scoped: false}, 
+	        React.createElement("a", {className: "test"}, "red zoom penetrate")
 	      )
-	    ), css)
-	    
+	    )
+	  )
 	);
 	
 	React.render(html, document.getElementById('__react-content'));
@@ -50,20 +62,57 @@ webpackJsonp([0,1],[
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-	  transformElement: __webpack_require__(4),
-	  parseCss: __webpack_require__(5)
-	};
+	var ScopedStyle = __webpack_require__(4);
+	ScopedStyle.transformElement = __webpack_require__(5);
+	ScopedStyle.parseStyle = ScopedStyle.parseCss = __webpack_require__(6);
+	module.exports = ScopedStyle;
 
 
 /***/ },
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(5);
-	var domify = __webpack_require__(6);
-	var flatten = __webpack_require__(7);
-	var querySelectorAll = __webpack_require__(8);
+	var React = __webpack_require__(2);
+	var transform = __webpack_require__(5);
+	var cssParse = __webpack_require__(6);
+	
+	var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){ScopedStyle[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;ScopedStyle.prototype=Object.create(____SuperProtoOf____Class0);ScopedStyle.prototype.constructor=ScopedStyle;ScopedStyle.__superConstructor__=____Class0;
+	  function ScopedStyle(props, context) {"use strict";
+	    ____Class0.call(this,props, context);
+	  }
+	
+	  Object.defineProperty(ScopedStyle.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
+	    var props = this.props;
+	    var style = this.props.style;
+	    if (typeof style === 'string') {
+	      style = cssParse(style);
+	    }
+	    var child = React.Children.only(props.children);
+	    if (style) {
+	      return transform(child, style);
+	    } else {
+	      return child;
+	    }
+	  }});
+	
+	
+	ScopedStyle.defaultProps = {
+	  scoped: true
+	};
+	
+	ScopedStyle.__ScopedStyle__ = 1;
+	
+	module.exports = ScopedStyle;
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var parse = __webpack_require__(6);
+	var domify = __webpack_require__(7);
+	var flatten = __webpack_require__(8);
+	var querySelectorAll = __webpack_require__(9);
 	
 	function camelCase(str) {
 	  return str.replace(/-\w/g, function (w) {
@@ -104,7 +153,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/reworkcss/css/blob/master/lib/parse/index.js
@@ -716,7 +765,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// make element has dom node interface
@@ -759,13 +808,16 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
 	
 	function flatten(element, ret) {
 	  if (React.isValidElement(element)) {
+	    if (element.type.__ScopedStyle__ && element.props.scoped) {
+	      return ret;
+	    }
 	    ret = ret || [];
 	    ret.push(element);
 	    React.Children.forEach(element.props.children, function (c) {
@@ -779,14 +831,14 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// css3 selector engine for react element
 	
 	/*jshint camelcase: false */
 	
-	var parser = __webpack_require__(9);
+	var parser = __webpack_require__(10);
 	var React = __webpack_require__(2);
 	var ReactChildren = React.Children;
 	
@@ -1412,7 +1464,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

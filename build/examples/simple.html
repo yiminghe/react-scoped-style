@@ -183,9 +183,9 @@
 <script src="simple.js?nowrap"></script>
 <div class="highlight">
 <pre>
-<span class="xml">var scopedStyle = require('react-scoped-style');
+<span class="xml">var ScopedStyle = require('react-scoped-style');
 var React = require('react');
-var css = scopedStyle.parseCss(`
+var style = ScopedStyle.parseStyle(`
 .test {
   color:red;
   zoom:1.5;
@@ -197,18 +197,30 @@ div&gt;span{
 `);
 
 var html = <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"test"</span>&gt;</span>scope react element by transform external style into inline styles<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
-  {
-    scopedStyle.transformElement(<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"test"</span>&gt;</span>scope react element by transform external style into inline styles<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://github.com/react-component/react-scoped-style"</span>&gt;</span>repo<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">ScopedStyle</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{style}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>green zoom<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">style</span>=</span></span><span class="hljs-expression">{{<span class="hljs-variable">color</span>:'<span class="hljs-variable">blue</span>'}}</span><span class="xml"><span class="hljs-tag">&gt;</span>blue zoom<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">style</span>=</span></span><span class="hljs-expression">{{<span class="hljs-variable">color</span>: '<span class="hljs-variable">blue</span>'}}</span><span class="xml"><span class="hljs-tag">&gt;</span>blue zoom<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>black<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>  -   <span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">'test a'</span>&gt;</span>red zoom<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">'test'</span>&gt;</span>red zoom<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>, css)
-    }
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">ScopedStyle</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">'test'</span>&gt;</span>black isolate<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">ScopedStyle</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">ScopedStyle</span> <span class="hljs-attribute">scoped</span>=<span class="hljs-value">{false}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">'test'</span>&gt;</span>red zoom penetrate<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">ScopedStyle</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">ScopedStyle</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>;
 
 React.render(html, document.getElementById('__react-content'));

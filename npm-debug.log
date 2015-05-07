@@ -1,21 +1,236 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/Users/yiminghe/.nvm/versions/node/v0.12.0/bin/node',
 1 verbose cli   '/Users/yiminghe/.nvm/versions/node/v0.12.0/bin/npm',
-1 verbose cli   'run',
-1 verbose cli   'build' ]
+1 verbose cli   'install',
+1 verbose cli   'precommit-hook@1.x' ]
 2 info using npm@2.5.1
 3 info using node@v0.12.0
-4 verbose stack Error: ENOENT, open '/Users/yiminghe/code/react-components/react-scoped-css-gh-pages/package.json'
-4 verbose stack     at Error (native)
-5 verbose cwd /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
-6 error Darwin 14.3.0
-7 error argv "/Users/yiminghe/.nvm/versions/node/v0.12.0/bin/node" "/Users/yiminghe/.nvm/versions/node/v0.12.0/bin/npm" "run" "build"
-8 error node v0.12.0
-9 error npm  v2.5.1
-10 error path /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/package.json
-11 error code ENOENT
-12 error errno -2
-13 error enoent ENOENT, open '/Users/yiminghe/code/react-components/react-scoped-css-gh-pages/package.json'
-13 error enoent This is most likely not a problem with npm itself
-13 error enoent and is related to npm not being able to find a file.
-14 verbose exit [ -2, true ]
+4 silly cache add args [ 'precommit-hook@1.x', null ]
+5 verbose cache add spec precommit-hook@1.x
+6 silly cache add parsed spec { raw: 'precommit-hook@1.x',
+6 silly cache add   scope: null,
+6 silly cache add   name: 'precommit-hook',
+6 silly cache add   rawSpec: '1.x',
+6 silly cache add   spec: '>=1.0.0 <2.0.0',
+6 silly cache add   type: 'range' }
+7 verbose addNamed precommit-hook@>=1.0.0 <2.0.0
+8 silly addNamed semver.valid null
+9 silly addNamed semver.validRange >=1.0.0 <2.0.0
+10 silly addNameRange { name: 'precommit-hook',
+10 silly addNameRange   range: '>=1.0.0 <2.0.0',
+10 silly addNameRange   hasData: false }
+11 silly mapToRegistry name precommit-hook
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry uri https://registry.npmjs.org/precommit-hook
+15 verbose addNameRange registry:https://registry.npmjs.org/precommit-hook not in flight; fetching
+16 verbose request uri https://registry.npmjs.org/precommit-hook
+17 verbose request no auth needed
+18 info attempt registry request try #1 at 3:18:34 AM
+19 verbose request id cc71c41614fde425
+20 verbose etag "C0BDAUL49RSZS6XFN7LK2IBT1"
+21 http request GET https://registry.npmjs.org/precommit-hook
+22 http 304 https://registry.npmjs.org/precommit-hook
+23 silly get cb [ 304,
+23 silly get   { date: 'Wed, 06 May 2015 19:18:35 GMT',
+23 silly get     via: '1.1 varnish',
+23 silly get     'last-modified': 'Wed, 06 May 2015 19:18:36 GMT',
+23 silly get     'cache-control': 'max-age=60',
+23 silly get     etag: '"C0BDAUL49RSZS6XFN7LK2IBT1"',
+23 silly get     age: '0',
+23 silly get     connection: 'keep-alive',
+23 silly get     'x-served-by': 'cache-nrt6132-NRT',
+23 silly get     'x-cache': 'MISS',
+23 silly get     'x-cache-hits': '0',
+23 silly get     'x-timer': 'S1430939915.073768,VS0,VE942',
+23 silly get     vary: 'Accept' } ]
+24 verbose etag https://registry.npmjs.org/precommit-hook from cache
+25 verbose get saving precommit-hook to /Users/yiminghe/.npm/registry.npmjs.org/precommit-hook/.cache.json
+26 silly addNameRange number 2 { name: 'precommit-hook',
+26 silly addNameRange   range: '>=1.0.0 <2.0.0',
+26 silly addNameRange   hasData: true }
+27 silly addNameRange versions [ 'precommit-hook',
+27 silly addNameRange   [ '0.0.1',
+27 silly addNameRange     '0.0.2',
+27 silly addNameRange     '0.0.3',
+27 silly addNameRange     '0.0.4',
+27 silly addNameRange     '0.0.5',
+27 silly addNameRange     '0.1.0',
+27 silly addNameRange     '0.1.1',
+27 silly addNameRange     '0.2.0',
+27 silly addNameRange     '0.2.1',
+27 silly addNameRange     '0.3.0',
+27 silly addNameRange     '0.3.1',
+27 silly addNameRange     '0.3.2',
+27 silly addNameRange     '0.3.3',
+27 silly addNameRange     '0.3.4',
+27 silly addNameRange     '0.3.5',
+27 silly addNameRange     '0.3.6',
+27 silly addNameRange     '0.3.7',
+27 silly addNameRange     '0.3.8',
+27 silly addNameRange     '0.3.9',
+27 silly addNameRange     '0.3.10',
+27 silly addNameRange     '0.4.0',
+27 silly addNameRange     '0.4.1',
+27 silly addNameRange     '1.0.0',
+27 silly addNameRange     '1.0.1',
+27 silly addNameRange     '1.0.2',
+27 silly addNameRange     '1.0.3',
+27 silly addNameRange     '1.0.5',
+27 silly addNameRange     '1.0.6',
+27 silly addNameRange     '1.0.7',
+27 silly addNameRange     '2.0.0',
+27 silly addNameRange     '2.0.1' ] ]
+28 verbose addNamed precommit-hook@1.0.7
+29 silly addNamed semver.valid 1.0.7
+30 silly addNamed semver.validRange 1.0.7
+31 silly cache afterAdd precommit-hook@1.0.7
+32 verbose afterAdd /Users/yiminghe/.npm/precommit-hook/1.0.7/package/package.json not in flight; writing
+33 verbose afterAdd /Users/yiminghe/.npm/precommit-hook/1.0.7/package/package.json written
+34 silly install resolved [ { author:
+34 silly install resolved      { name: 'Nathan LaFreniere',
+34 silly install resolved        email: 'quitlahok@gmail.com',
+34 silly install resolved        url: 'https://github.com/nlf' },
+34 silly install resolved     name: 'precommit-hook',
+34 silly install resolved     description: 'A useful pre-commit hook for git based projects that lints and runs npm test',
+34 silly install resolved     version: '1.0.7',
+34 silly install resolved     license: 'MIT',
+34 silly install resolved     homepage: 'https://github.com/nlf/precommit-hook',
+34 silly install resolved     repository: { url: 'https://github.com/nlf/precommit-hook.git' },
+34 silly install resolved     bin:
+34 silly install resolved      { hook_install: './bin/install',
+34 silly install resolved        hook_uninstall: './bin/uninstall',
+34 silly install resolved        'pre-commit': './bin/pre-commit' },
+34 silly install resolved     scripts: { install: 'hook_install', uninstall: 'hook_uninstall' },
+34 silly install resolved     peerDependencies: { jshint: '' },
+34 silly install resolved     gitHead: '88ebbec07bdb21632c9aab59cdbfc266d40184ac',
+34 silly install resolved     bugs: { url: 'https://github.com/nlf/precommit-hook/issues' },
+34 silly install resolved     _id: 'precommit-hook@1.0.7',
+34 silly install resolved     _shasum: 'e7d3730fe0e2cc97259c3e7f37461c6353b43ca6',
+34 silly install resolved     _from: 'precommit-hook@>=1.0.0 <2.0.0',
+34 silly install resolved     _npmVersion: '1.4.21',
+34 silly install resolved     _npmUser: { name: 'nlf', email: 'quitlahok@gmail.com' },
+34 silly install resolved     maintainers: [ [Object] ],
+34 silly install resolved     dist:
+34 silly install resolved      { shasum: 'e7d3730fe0e2cc97259c3e7f37461c6353b43ca6',
+34 silly install resolved        tarball: 'http://registry.npmjs.org/precommit-hook/-/precommit-hook-1.0.7.tgz' },
+34 silly install resolved     directories: {},
+34 silly install resolved     _resolved: 'https://registry.npmjs.org/precommit-hook/-/precommit-hook-1.0.7.tgz',
+34 silly install resolved     readme: 'ERROR: No README data found!' } ]
+35 info install precommit-hook@1.0.7 into /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+36 info installOne precommit-hook@1.0.7
+37 verbose installOne of precommit-hook to /Users/yiminghe/code/react-components/react-scoped-css-gh-pages not in flight; installing
+38 verbose lock using /Users/yiminghe/.npm/_locks/precommit-hook-3e2b1fdbaec6d223.lock for /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+39 silly install write writing precommit-hook 1.0.7 to /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+40 silly cache addNamed cb precommit-hook@1.0.7
+41 verbose unbuild node_modules/precommit-hook
+42 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+43 verbose tar unpack /Users/yiminghe/.npm/precommit-hook/1.0.7/package.tgz
+44 verbose tar unpacking to /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+45 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+46 silly gunzTarPerm modes [ '755', '644' ]
+47 silly gunzTarPerm extractEntry package.json
+48 silly gunzTarPerm extractEntry .npmignore
+49 silly gunzTarPerm extractEntry README.md
+50 silly gunzTarPerm extractEntry utils.js
+51 silly gunzTarPerm extractEntry .jshintignore
+52 silly gunzTarPerm extractEntry .jshintrc
+53 silly gunzTarPerm extractEntry bin/install
+54 silly gunzTarPerm extractEntry bin/pre-commit
+55 silly gunzTarPerm extractEntry bin/uninstall
+56 silly gunzTarPerm extractEntry files/jshintignore
+57 silly gunzTarPerm extractEntry files/jshintrc
+58 info preinstall precommit-hook@1.0.7
+59 silly prepareForInstallMany adding jshint@ from precommit-hook peerDependencies
+60 silly install resolved []
+61 verbose about to build /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+62 info build /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+63 verbose linkStuff [ false,
+63 verbose linkStuff   false,
+63 verbose linkStuff   false,
+63 verbose linkStuff   '/Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules' ]
+64 info linkStuff precommit-hook@1.0.7
+65 verbose linkBins precommit-hook@1.0.7
+66 verbose link bins [ { hook_install: './bin/install',
+66 verbose link bins     hook_uninstall: './bin/uninstall',
+66 verbose link bins     'pre-commit': './bin/pre-commit' },
+66 verbose link bins   '/Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin',
+66 verbose link bins   false ]
+67 verbose linkMans precommit-hook@1.0.7
+68 verbose rebuildBundles precommit-hook@1.0.7
+69 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/hook_install
+70 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/hook_uninstall
+71 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/pre-commit
+72 info install precommit-hook@1.0.7
+73 verbose unsafe-perm in lifecycle true
+74 info precommit-hook@1.0.7 Failed to exec install script
+75 verbose unlock done using /Users/yiminghe/.npm/_locks/precommit-hook-3e2b1fdbaec6d223.lock for /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+76 verbose stack Error: precommit-hook@1.0.7 install: `hook_install`
+76 verbose stack Exit status 1
+76 verbose stack     at EventEmitter.<anonymous> (/Users/yiminghe/.nvm/versions/node/v0.12.0/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+76 verbose stack     at EventEmitter.emit (events.js:110:17)
+76 verbose stack     at ChildProcess.<anonymous> (/Users/yiminghe/.nvm/versions/node/v0.12.0/lib/node_modules/npm/lib/utils/spawn.js:14:12)
+76 verbose stack     at ChildProcess.emit (events.js:110:17)
+76 verbose stack     at maybeClose (child_process.js:1008:16)
+76 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1080:5)
+77 verbose pkgid precommit-hook@1.0.7
+78 verbose cwd /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+79 error Darwin 14.3.0
+80 error argv "/Users/yiminghe/.nvm/versions/node/v0.12.0/bin/node" "/Users/yiminghe/.nvm/versions/node/v0.12.0/bin/npm" "install" "precommit-hook@1.x"
+81 error node v0.12.0
+82 error npm  v2.5.1
+83 error code ELIFECYCLE
+84 error precommit-hook@1.0.7 install: `hook_install`
+84 error Exit status 1
+85 error Failed at the precommit-hook@1.0.7 install script 'hook_install'.
+85 error This is most likely a problem with the precommit-hook package,
+85 error not with npm itself.
+85 error Tell the author that this fails on your system:
+85 error     hook_install
+85 error You can get their info via:
+85 error     npm owner ls precommit-hook
+85 error There is likely additional logging output above.
+86 verbose exit [ 1, true ]
+87 verbose unbuild node_modules/precommit-hook
+88 info preuninstall precommit-hook@1.0.7
+89 info uninstall precommit-hook@1.0.7
+90 verbose unsafe-perm in lifecycle true
+91 info precommit-hook@1.0.7 Failed to exec uninstall script
+92 warn continuing anyway precommit-hook@1.0.7 uninstall: `hook_uninstall`
+92 warn continuing anyway Exit status 1
+93 verbose unbuild rmStuff precommit-hook@1.0.7 from /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+94 verbose gentlyRm verifying that /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is managed by npm
+95 verbose gentlyRm verifying that /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is managed by npm
+96 verbose gentlyRm verifying that /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is managed by npm
+97 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is not inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+98 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is not inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+99 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is not inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+100 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is not inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+101 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is not inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+102 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is not inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+103 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin is inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+104 silly gentlyRm /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is managed by npm
+105 silly gentlyRm /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/hook_install is under /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+106 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/hook_install up to /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+107 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin is inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+108 silly gentlyRm /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is managed by npm
+109 silly gentlyRm /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/hook_uninstall is under /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+110 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/hook_uninstall up to /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+111 silly isManaged /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin is inside /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+112 silly gentlyRm /Users/yiminghe/code/react-components/react-scoped-css-gh-pages is managed by npm
+113 silly gentlyRm /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/pre-commit is under /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+114 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/pre-commit up to /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
+115 silly gentlyRm removing /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/hook_install
+116 silly gentlyRm removing /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/hook_uninstall
+117 silly gentlyRm removing /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin/pre-commit
+118 silly gentlyRm removing /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin
+119 silly gentlyRm removing /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin
+120 silly gentlyRm removing /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin
+121 silly gentlyRm quitting because lost the race to remove /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin
+122 silly gentlyRm quitting because lost the race to remove /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/.bin
+123 silly gentlyRm quitting because other entries in /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+124 info postuninstall precommit-hook@1.0.7
+125 verbose gentlyRm vacuuming /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+126 silly gentlyRm purging /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules/precommit-hook
+127 silly gentlyRm removing /Users/yiminghe/code/react-components/react-scoped-css-gh-pages/node_modules
+128 silly gentlyRm finished vacuuming up to /Users/yiminghe/code/react-components/react-scoped-css-gh-pages
