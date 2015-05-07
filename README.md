@@ -53,9 +53,9 @@ online example: http://react-component.github.io/react-scoped-style/build/exampl
 ## Usage
 
 ```js
-var scopedStyle = require('react-scoped-style');
+var ScopedStyle = require('react-scoped-style');
 var React = require('react');
-var css = scopedStyle.parseCss(`
+var style = ScopedStyle.parseStyle(`
 .test {
   color:red;
   zoom:1.5;
@@ -67,29 +67,68 @@ div>span{
 `);
 
 var html = <div>
-  <h1 className="test">scope react element by transform external style into inline styles</h1>
-  {
-    scopedStyle.transformElement(<div>
+  <p className="test">scope react element by transform external style into inline styles</p>
+  <p>
+    <a href="https://github.com/react-component/react-scoped-style">repo</a>
+  </p>
+
+  <ScopedStyle style={style}>
+    <div>
       <span>green zoom</span>
-      <span style={{color:'blue'}}>blue zoom</span>
+      <span style={{color: 'blue'}}>blue zoom</span>
       <p>
         <span>black</span>
         <span>  -   </span>
         <a className='test'>red zoom</a>
       </p>
-    </div>, css)
-    }
+
+      <ScopedStyle>
+        <a className='test'>black isolate</a>
+      </ScopedStyle>
+
+      <ScopedStyle scoped={false}>
+        <a className='test'>red zoom penetrate</a>
+      </ScopedStyle>
+    </div>
+  </ScopedStyle>
 </div>;
 
 React.render(html, document.getElementById('__react-content'));
+
 ```
 
 ## API
 
+### props
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">name</th>
+        <th style="width: 50px;">type</th>
+        <th style="width: 50px;">default</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>scoped</td>
+          <td>Boolean</td>
+          <td>true</td>
+          <td>whether isolated from outside</td>
+        </tr>
+        <tr>
+          <td>style</td>
+          <td>String|ParsedCssResult</td>
+          <td></td>
+          <td>style to be applied</td>
+        </tr>
+    </tbody>
+</table>
+
 ### methods
 
 - ParsedCssResult parseCss(css:String)  parse css into object
-
 
 - ReactElement transformElement(root:ReactElement, css:String|ParsedCssResult)
 
