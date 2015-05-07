@@ -11,7 +11,7 @@ webpackJsonp([0,1],[
 
 	var ScopedStyle = __webpack_require__(3);
 	var React = __webpack_require__(2);
-	var style = ScopedStyle.parseStyle(("\n.test {\n  color:red;\n  zoom:1.5;\n}\ndiv>span{\n  color:green;\n  zoom:1.5;\n}\n"
+	var style = ScopedStyle.createStyleSheet(("\n.test {\n  color:red;\n  zoom:1.5;\n}\ndiv>span{\n  color:green;\n  zoom:1.5;\n}\n"
 	
 	
 	
@@ -64,7 +64,7 @@ webpackJsonp([0,1],[
 
 	var ScopedStyle = __webpack_require__(4);
 	ScopedStyle.transformElement = __webpack_require__(5);
-	ScopedStyle.parseStyle = ScopedStyle.parseCss = __webpack_require__(6);
+	ScopedStyle.createStyleSheet = __webpack_require__(6);
 	module.exports = ScopedStyle;
 
 
