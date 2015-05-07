@@ -20,7 +20,7 @@ describe('react-scoped-style', function () {
   });
 
   it('simple works', function () {
-    var style = ScopedStyle.parseStyle(`
+    var style = ScopedStyle.createStyleSheet(`
 .test {
   color:red;
   zoom:1.5;

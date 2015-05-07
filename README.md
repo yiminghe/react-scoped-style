@@ -128,7 +128,7 @@ React.render(html, document.getElementById('__react-content'));
 
 ### methods
 
-- ParsedCssResult parseCss(css:String)  parse css into object
+- ParsedCssResult createStyleSheet(css:String)  parse css into object
 
 - ReactElement transformElement(root:ReactElement, css:String|ParsedCssResult)
 

@@ -1,6 +1,6 @@
 var ScopedStyle = require('react-scoped-style');
 var React = require('react');
-var style = ScopedStyle.parseStyle(`
+var style = ScopedStyle.createStyleSheet(`
 .test {
   color:red;
   zoom:1.5;
