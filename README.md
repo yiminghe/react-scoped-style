@@ -55,7 +55,7 @@ online example: http://react-component.github.io/react-scoped-style/build/exampl
 ```js
 var ScopedStyle = require('react-scoped-style');
 var React = require('react');
-var style = ScopedStyle.parseStyle(`
+var style = ScopedStyle.createStyleSheet(`
 .test {
   color:red;
   zoom:1.5;
@@ -94,7 +94,6 @@ var html = <div>
 </div>;
 
 React.render(html, document.getElementById('__react-content'));
-
 ```
 
 ## API
