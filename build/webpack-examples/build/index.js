@@ -110,10 +110,10 @@
 
 	var React = __webpack_require__(/*! react */ 2);
 	var ScopedStyle = __webpack_require__(/*! react-scoped-style */ 3);
-	var regionStyle = __webpack_require__(/*! ./regionStyle */ 9);
+	var regionStyle = __webpack_require__(/*! ./regionStyle */ 11);
 	var blockStyle = __webpack_require__(/*! ./blockStyle */ 10);
 	
-	var ____Class1=React.Component;for(var ____Class1____Key in ____Class1){if(____Class1.hasOwnProperty(____Class1____Key)){Region[____Class1____Key]=____Class1[____Class1____Key];}}var ____SuperProtoOf____Class1=____Class1===null?null:____Class1.prototype;Region.prototype=Object.create(____SuperProtoOf____Class1);Region.prototype.constructor=Region;Region.__superConstructor__=____Class1;function Region(){"use strict";if(____Class1!==null){____Class1.apply(this,arguments);}}
+	var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____Class2.hasOwnProperty(____Class2____Key)){Region[____Class2____Key]=____Class2[____Class2____Key];}}var ____SuperProtoOf____Class2=____Class2===null?null:____Class2.prototype;Region.prototype=Object.create(____SuperProtoOf____Class2);Region.prototype.constructor=Region;Region.__superConstructor__=____Class2;function Region(){"use strict";if(____Class2!==null){____Class2.apply(this,arguments);}}
 	  Object.defineProperty(Region.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
 	    return React.createElement(ScopedStyle, {style: [blockStyle, regionStyle]}, 
 	      React.createElement("div", {className: "container"}, 
@@ -140,10 +140,10 @@
 
 	var React = __webpack_require__(/*! react */ 2);
 	var ScopedStyle = __webpack_require__(/*! react-scoped-style */ 3);
-	var subRegionStyle = __webpack_require__(/*! ./subRegionStyle */ 11);
+	var subRegionStyle = __webpack_require__(/*! ./subRegionStyle */ 9);
 	var blockStyle = __webpack_require__(/*! ./blockStyle */ 10);
 	
-	var ____Class2=React.Component;for(var ____Class2____Key in ____Class2){if(____Class2.hasOwnProperty(____Class2____Key)){SubRegion[____Class2____Key]=____Class2[____Class2____Key];}}var ____SuperProtoOf____Class2=____Class2===null?null:____Class2.prototype;SubRegion.prototype=Object.create(____SuperProtoOf____Class2);SubRegion.prototype.constructor=SubRegion;SubRegion.__superConstructor__=____Class2;function SubRegion(){"use strict";if(____Class2!==null){____Class2.apply(this,arguments);}}
+	var ____Class1=React.Component;for(var ____Class1____Key in ____Class1){if(____Class1.hasOwnProperty(____Class1____Key)){SubRegion[____Class1____Key]=____Class1[____Class1____Key];}}var ____SuperProtoOf____Class1=____Class1===null?null:____Class1.prototype;SubRegion.prototype=Object.create(____SuperProtoOf____Class1);SubRegion.prototype.constructor=SubRegion;SubRegion.__superConstructor__=____Class1;function SubRegion(){"use strict";if(____Class1!==null){____Class1.apply(this,arguments);}}
 	  Object.defineProperty(SubRegion.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
 	    return React.createElement(ScopedStyle, {style: [blockStyle, subRegionStyle]}, 
 	      React.createElement("div", {className: "container"}, 
@@ -871,13 +871,13 @@
 
 /***/ },
 /* 9 */
-/*!************************!*\
-  !*** ./regionStyle.js ***!
-  \************************/
+/*!***************************!*\
+  !*** ./subRegionStyle.js ***!
+  \***************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var ScopedStyle = __webpack_require__(/*! react-scoped-style */ 3);
-	var css = __webpack_require__(/*! raw!./Region.css */ 37);
+	var css = __webpack_require__(/*! raw!./SubRegion.css */ 37);
 	module.exports = ScopedStyle.createStyleSheet(css);
 	module.exports.raw = css;
 
@@ -897,13 +897,13 @@
 
 /***/ },
 /* 11 */
-/*!***************************!*\
-  !*** ./subRegionStyle.js ***!
-  \***************************/
+/*!************************!*\
+  !*** ./regionStyle.js ***!
+  \************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var ScopedStyle = __webpack_require__(/*! react-scoped-style */ 3);
-	var css = __webpack_require__(/*! raw!./SubRegion.css */ 39);
+	var css = __webpack_require__(/*! raw!./Region.css */ 39);
 	module.exports = ScopedStyle.createStyleSheet(css);
 	module.exports.raw = css;
 
@@ -6719,12 +6719,12 @@
 
 /***/ },
 /* 37 */
-/*!************************************!*\
-  !*** ../~/raw-loader!./Region.css ***!
-  \************************************/
+/*!***************************************!*\
+  !*** ../~/raw-loader!./SubRegion.css ***!
+  \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = ".container {\n  border: 1px solid red;\n  margin: 10px;\n}\n"
+	module.exports = ".container {\n  border: 1px solid green;\n  margin: 100px;\n}\n"
 
 /***/ },
 /* 38 */
@@ -6737,12 +6737,12 @@
 
 /***/ },
 /* 39 */
-/*!***************************************!*\
-  !*** ../~/raw-loader!./SubRegion.css ***!
-  \***************************************/
+/*!************************************!*\
+  !*** ../~/raw-loader!./Region.css ***!
+  \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = ".container {\n  border: 1px solid green;\n  margin: 100px;\n}\n"
+	module.exports = ".container {\n  border-style: solid;\n  border-color: red;\n  margin: 10px;\n  padding:50px;\n  border-width: 10px;\n}\n"
 
 /***/ },
 /* 40 */
