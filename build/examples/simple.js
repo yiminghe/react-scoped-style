@@ -76,11 +76,7 @@ webpackJsonp([0,1],[
 	var transform = __webpack_require__(5);
 	var cssParse = __webpack_require__(6);
 	
-	var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){ScopedStyle[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;ScopedStyle.prototype=Object.create(____SuperProtoOf____Class0);ScopedStyle.prototype.constructor=ScopedStyle;ScopedStyle.__superConstructor__=____Class0;
-	  function ScopedStyle(props, context) {"use strict";
-	    ____Class0.call(this,props, context);
-	  }
-	
+	var ____Class0=React.Component;for(var ____Class0____Key in ____Class0){if(____Class0.hasOwnProperty(____Class0____Key)){ScopedStyle[____Class0____Key]=____Class0[____Class0____Key];}}var ____SuperProtoOf____Class0=____Class0===null?null:____Class0.prototype;ScopedStyle.prototype=Object.create(____SuperProtoOf____Class0);ScopedStyle.prototype.constructor=ScopedStyle;ScopedStyle.__superConstructor__=____Class0;function ScopedStyle(){"use strict";if(____Class0!==null){____Class0.apply(this,arguments);}}
 	  Object.defineProperty(ScopedStyle.prototype,"render",{writable:true,configurable:true,value:function() {"use strict";
 	    var props = this.props;
 	    var style = this.props.style;
@@ -109,7 +105,6 @@ webpackJsonp([0,1],[
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(6);
 	var domify = __webpack_require__(7);
 	var flatten = __webpack_require__(8);
 	var querySelectorAll = __webpack_require__(9);
@@ -120,34 +115,43 @@ webpackJsonp([0,1],[
 	  });
 	}
 	
-	module.exports = function (element, css) {
-	  if (typeof css === 'string') {
-	    css = parse(css);
+	module.exports = function (element, style) {
+	  if (!style) {
+	    return element;
+	  }
+	  if (!Array.isArray(style)) {
+	    style = [style];
 	  }
 	  //console.log(css);
 	  //console.log(element);
 	  element = domify(element);
 	  //console.log(element);
 	  var allNodes = flatten(element);
-	  var stylesheet = css.stylesheet || {};
-	  var rules = stylesheet.rules || [];
-	  rules.forEach(function (r) {
-	    var selectors = r.selectors;
-	    var declarations = r.declarations;
-	    selectors.forEach(function (selector) {
-	      var matchedNodes = querySelectorAll(selector, allNodes);
-	      //console.log(matchedNodes);
-	      declarations.forEach(function (d) {
-	        matchedNodes.forEach(function (n) {
-	          var style = n.props.style = n.props.style || {};
-	          var property = camelCase(d.property);
-	          if (style[property] === undefined) {
-	            style[property] = d.value;
-	          }
+	
+	  style.forEach(function (s) {
+	    if (s) {
+	      var stylesheet = s.stylesheet || {};
+	      var rules = stylesheet.rules || [];
+	      rules.forEach(function (r) {
+	        var selectors = r.selectors;
+	        var declarations = r.declarations;
+	        selectors.forEach(function (selector) {
+	          var matchedNodes = querySelectorAll(selector, allNodes);
+	          //console.log(matchedNodes);
+	          declarations.forEach(function (d) {
+	            var property = camelCase(d.property);
+	            matchedNodes.forEach(function (n) {
+	              var style = n.props.style = n.props.style || {};
+	              if (style[property] === undefined) {
+	                style[property] = d.value;
+	              }
+	            });
+	          });
 	        });
 	      });
-	    });
+	    }
 	  });
+	
 	  return element;
 	};
 
@@ -844,7 +848,6 @@ webpackJsonp([0,1],[
 	
 	var EXPANDO_SELECTOR_KEY = '_ks_data_selector_id_';
 	var caches = {};
-	var isContextXML;
 	var uuid = 0;
 	var subMatchesCache = {};
 	var SPACE = ' ';
@@ -881,52 +884,6 @@ webpackJsonp([0,1],[
 	    (SPACE + className + SPACE).indexOf(SPACE + cls + SPACE) > -1;
 	}
 	
-	function compareNodeOrder(a, b) {
-	  return a.props.__reactScopedCss__mountOrder - b.props.__reactScopedCss__mountOrder;
-	}
-	
-	var unique = (function () {
-	  var hasDuplicate,
-	    baseHasDuplicate = true;
-	
-	  // Here we check if the JavaScript engine is using some sort of
-	  // optimization where it does not always call our comparison
-	  // function. If that is the case, discard the hasDuplicate value.
-	  // Thus far that includes Google Chrome.
-	  [0, 0].sort(function () {
-	    baseHasDuplicate = false;
-	    return 0;
-	  });
-	
-	  function sortOrder(a, b) {
-	    if (a === b) {
-	      hasDuplicate = true;
-	      return 0;
-	    }
-	
-	    return compareNodeOrder(a, b);
-	  }
-	
-	  // 排序去重
-	  return function (elements) {
-	    hasDuplicate = baseHasDuplicate;
-	    elements.sort(sortOrder);
-	
-	    if (hasDuplicate) {
-	      var i = 1, len = elements.length;
-	      while (i < len) {
-	        if (elements[i] === elements[i - 1]) {
-	          elements.splice(i, 1);
-	          --len;
-	        } else {
-	          i++;
-	        }
-	      }
-	    }
-	    return elements;
-	  };
-	})();
-	
 	// CSS escapes http://www.w3.org/TR/CSS21/syndata.html#escaped-characters
 	var unescape = /\\([\da-fA-F]{1,6}[\x20\t\r\n\f]?|.)/g,
 	  unescapeFn = function (_, escaped) {
@@ -945,16 +902,17 @@ webpackJsonp([0,1],[
 	
 	var pseudoFnExpr = {
 	  'nth-child': function (el, param) {
-	    var ab = getAb(param),
-	      a = ab.a,
-	      b = ab.b;
+	    var ab = getAb(param);
+	    var a = ab.a;
+	    var b = ab.b;
 	    if (a === 0 && b === 0) {
 	      return 0;
 	    }
-	    var index = 0,
-	      parent = el.props.__reactScopedCss__parentNode;
+	    var index = 0;
+	    var parent = el.props.__reactScopedCss__parentNode;
 	    if (parent) {
-	      var childNodes = parent.props.children, ret;
+	      var childNodes = parent.props.children;
+	      var ret;
 	      ReactChildren.forEach(childNodes, function (child) {
 	        if (React.isValidElement(child)) {
 	          index++;
@@ -968,20 +926,19 @@ webpackJsonp([0,1],[
 	    return 0;
 	  },
 	  'nth-last-child': function (el, param) {
-	    var ab = getAb(param),
-	      a = ab.a,
-	      b = ab.b;
+	    var ab = getAb(param);
+	    var a = ab.a;
+	    var b = ab.b;
 	    if (a === 0 && b === 0) {
 	      return 0;
 	    }
-	    var index = 0,
-	      parent = el.props.__reactScopedCss__parentNode;
+	    var index = 0;
+	    var parent = el.props.__reactScopedCss__parentNode;
 	    if (parent) {
-	      var childNodes = toArray(parent.props.children),
-	        len = childNodes.length,
-	        count = len - 1,
-	        child,
-	        ret;
+	      var childNodes = toArray(parent.props.children);
+	      var len = childNodes.length;
+	      var count = len - 1;
+	      var child, ret;
 	      for (; count >= 0; count--) {
 	        child = childNodes[count];
 	        if (React.isValidElement(child)) {
@@ -996,21 +953,20 @@ webpackJsonp([0,1],[
 	    return 0;
 	  },
 	  'nth-of-type': function (el, param) {
-	    var ab = getAb(param),
-	      a = ab.a,
-	      b = ab.b;
+	    var ab = getAb(param);
+	    var a = ab.a;
+	    var b = ab.b;
 	    if (a === 0 && b === 0) {
 	      return 0;
 	    }
-	    var index = 0,
-	      parent = el.props.__reactScopedCss__parentNode;
+	    var index = 0;
+	    var parent = el.props.__reactScopedCss__parentNode;
 	    if (parent) {
-	      var childNodes = toArray(parent.props.children),
-	        elType = el.type,
-	        count = 0,
-	        child,
-	        ret,
-	        len = childNodes.length;
+	      var childNodes = toArray(parent.props.children);
+	      var elType = el.type;
+	      var count = 0;
+	      var child, ret;
+	      var len = childNodes.length;
 	      for (; count < len; count++) {
 	        child = childNodes[count];
 	        if (child && child.type === elType) {
@@ -1025,21 +981,20 @@ webpackJsonp([0,1],[
 	    return 0;
 	  },
 	  'nth-last-of-type': function (el, param) {
-	    var ab = getAb(param),
-	      a = ab.a,
-	      b = ab.b;
+	    var ab = getAb(param);
+	    var a = ab.a;
+	    var b = ab.b;
 	    if (a === 0 && b === 0) {
 	      return 0;
 	    }
-	    var index = 0,
-	      parent = el.props.__reactScopedCss__parentNode;
+	    var index = 0;
+	    var parent = el.props.__reactScopedCss__parentNode;
 	    if (parent) {
-	      var childNodes = toArray(parent.props.children),
-	        len = childNodes.length,
-	        elType = el.type,
-	        count = len - 1,
-	        child,
-	        ret;
+	      var childNodes = toArray(parent.props.children);
+	      var len = childNodes.length;
+	      var elType = el.type;
+	      var count = len - 1;
+	      var child, ret;
 	      for (; count >= 0; count--) {
 	        child = childNodes[count];
 	        if (child && child.type === elType) {
@@ -1060,10 +1015,10 @@ webpackJsonp([0,1],[
 	
 	var pseudoIdentExpr = {
 	  empty: function (el) {
-	    var childNodes = toArray(el.props.children),
-	      index = 0,
-	      len = childNodes.length - 1,
-	      child;
+	    var childNodes = toArray(el.props.children);
+	    var index = 0;
+	    var len = childNodes.length - 1;
+	    var child;
 	    for (; index < len; index++) {
 	      child = childNodes[index];
 	      // only element nodes and content nodes
@@ -1213,9 +1168,9 @@ webpackJsonp([0,1],[
 	}
 	
 	function getAb(param) {
-	  var a = 0,
-	    match,
-	    b = 0;
+	  var a = 0;
+	  var match;
+	  var b = 0;
 	  if (typeof param === 'number') {
 	    b = param;
 	  } else if (param === 'odd') {
@@ -1266,10 +1221,10 @@ webpackJsonp([0,1],[
 	    return false;
 	  }
 	
-	  var matched = 1,
-	    matchSuffix = match.suffix,
-	    matchSuffixLen,
-	    matchSuffixIndex;
+	  var matched = 1;
+	  var matchSuffix = match.suffix;
+	  var matchSuffixLen;
+	  var matchSuffixIndex;
 	
 	  if (match.t === 'tag') {
 	    matched &= matchExpr.tag(el, match.value);
@@ -1293,10 +1248,10 @@ webpackJsonp([0,1],[
 	// match by adjacent immediate single selector match
 	
 	function matchImmediate(el, match) {
-	  var matched = 1,
-	    startEl = el,
-	    relativeOp,
-	    startMatch = match;
+	  var matched = 1;
+	  var startEl = el;
+	  var relativeOp;
+	  var startMatch = match;
 	
 	  do {
 	    matched &= singleMatch(el, match);
@@ -1341,11 +1296,9 @@ webpackJsonp([0,1],[
 	}
 	
 	// find fixed part, fixed with seeds
-	
 	function findFixedMatchFromHead(el, head) {
-	  var relativeOp,
-	    cur = head;
-	
+	  var relativeOp;
+	  var cur = head;
 	  do {
 	    if (!singleMatch(el, cur)) {
 	      return null;
@@ -1368,24 +1321,15 @@ webpackJsonp([0,1],[
 	
 	function genId(el) {
 	  var selectorId;
-	
-	  if (isContextXML) {
-	    if (!(selectorId = el.getAttribute(EXPANDO_SELECTOR_KEY))) {
-	      el.setAttribute(EXPANDO_SELECTOR_KEY, selectorId = (+new Date() + '_' + (++uuid)));
-	    }
-	  } else {
-	    if (!(selectorId = el[EXPANDO_SELECTOR_KEY])) {
-	      selectorId = el[EXPANDO_SELECTOR_KEY] = (+new Date()) + '_' + (++uuid);
-	    }
+	  if (!(selectorId = el.props[EXPANDO_SELECTOR_KEY])) {
+	    selectorId = el.props[EXPANDO_SELECTOR_KEY] = (+new Date()) + '_' + (++uuid);
 	  }
-	
 	  return selectorId;
 	}
 	
 	function matchSub(el, match) {
-	  var selectorId = genId(el),
-	    matchKey;
-	  matchKey = selectorId + '_' + (match.order || 0);
+	  var selectorId = genId(el);
+	  var matchKey = selectorId + '_' + (match.order || 0);
 	  if (matchKey in subMatchesCache) {
 	    return subMatchesCache[matchKey];
 	  }
@@ -1414,34 +1358,24 @@ webpackJsonp([0,1],[
 	}
 	
 	function select(str, seeds) {
-	  if (!caches[str]) {
-	    caches[str] = parser.parse(str);
+	  if (!seeds.length) {
+	    return [];
 	  }
-	
-	  var selector = caches[str],
-	    groupIndex = 0,
-	    groupLen = selector.length,
-	    group,
-	    ret = [];
-	
+	  var selector = caches[str];
+	  if (!selector) {
+	    selector = caches[str] = parser.parse(str);
+	  }
+	  var groupIndex = 0;
+	  var groupLen = selector.length;
+	  var group;
+	  var ret = [];
+	  var seedsLen = seeds.length;
 	  for (; groupIndex < groupLen; groupIndex++) {
 	    resetStatus();
-	
 	    group = selector[groupIndex];
-	
-	    var seedsIndex,
-	      mySeeds = seeds,
-	      seedsLen;
-	
-	    seedsIndex = 0;
-	    seedsLen = mySeeds.length;
-	
-	    if (!seedsLen) {
-	      continue;
-	    }
-	
+	    var seedsIndex = 0;
 	    for (; seedsIndex < seedsLen; seedsIndex++) {
-	      var seed = mySeeds[seedsIndex];
+	      var seed = seeds[seedsIndex];
 	      var matchHead = findFixedMatchFromHead(seed, group);
 	      if (matchHead === true) {
 	        ret.push(seed);
@@ -1452,11 +1386,6 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  }
-	
-	  if (groupLen > 1) {
-	    ret = unique(ret);
-	  }
-	
 	  return ret;
 	}
 	
