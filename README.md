@@ -44,7 +44,7 @@ http://react-component.github.io/react-scoped-style/build/webpack-examples/
 
 ## docs
 
-- [介绍](https://github.com/react-component/react-scoped-style/docs/zh-cn/intro.md)
+- [介绍](https://github.com/react-component/react-scoped-style/blob/master/docs/zh-cn/intro.md)
 
 
 ## Feature
