@@ -34,11 +34,13 @@
   },
   "devDependencies": {
     "expect.js": "0.3.x",
+    "jsx-loader": "~0.13.2",
+    "node-dev": "2.x",
     "precommit-hook": "1.x",
+    "raw-loader": "~0.5.1",
     "rc-server": "2.x",
     "rc-tools": "2.x",
-    "react": "0.13.x",
-    "node-dev": "2.x"
+    "react": "0.13.x"
   },
   "precommit": [
     "lint",
@@ -48,7 +50,9 @@
     "transform": [
       [
         "reactify",
-        {"es6": true}
+        {
+          "es6": true
+        }
       ],
       "envify"
     ]

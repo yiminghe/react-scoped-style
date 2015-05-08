@@ -40,6 +40,12 @@ http://localhost:8000/examples/
 
 online example: http://react-component.github.io/react-scoped-style/build/examples/
 
+http://react-component.github.io/react-scoped-style/build/webpack-examples/
+
+## docs
+
+- [介绍](https://github.com/react-component/react-scoped-style/docs/zh-cn/intro.md)
+
 
 ## Feature
 
