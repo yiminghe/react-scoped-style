@@ -51,6 +51,9 @@ http://react-component.github.io/react-scoped-style/build/webpack-examples/
 
 * support ie8,ie8+,chrome,firefox,safari
 * does not support css priority (just apply rules by css order in source text)
+* does not support css property inheritance (no shadow dom...)
+* does not support :hover, :active ....
+* does not support css media query
 
 ## install
 
