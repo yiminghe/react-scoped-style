@@ -12,7 +12,7 @@ function domify(element, start) {
     var children = element.props.children;
     var lastChild;
     var newChildren = [];
-    React.Children.forEach(children, function (c) {
+    React.Children.forEach(children, (c) => {
       if (React.isValidElement(c)) {
         c = React.cloneElement(c, {
           __reactScopedCss__parentNode: element
@@ -28,10 +28,10 @@ function domify(element, start) {
       }
     });
 
-    return React.cloneElement.apply(React, [element, {
+    return React.cloneElement(element, {
       style: element.props.style || {},
       __reactScopedCss__mountOrder: order
-    }].concat(newChildren));
+    }, ...newChildren);
   }
   return element;
 }

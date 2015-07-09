@@ -19,11 +19,13 @@ var unescape = /\\([\da-fA-F]{1,6}[\x20\t\r\n\f]?|.)/g;
 function unescapeFn(_, escaped) {
   var high = '0x' + escaped - 0x10000;
   // NaN means non-codepoint
-  return isNaN(high) ? escaped :
-  // BMP codepoint
-  high < 0 ? String.fromCharCode(high + 0x10000) :
-  // Supplemental Plane codepoint (surrogate pair)
-  String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
+  return isNaN(high) ?
+    escaped :
+    // BMP codepoint
+    high < 0 ?
+      String.fromCharCode(high + 0x10000) :
+      // Supplemental Plane codepoint (surrogate pair)
+      String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
 }
 
 function unEscape(str) {
@@ -62,7 +64,7 @@ function getAb(param) {
   } else if (param === 'even') {
     a = 2;
     b = 0;
-  } else if (match = param.replace(/\s/g, '').match(aNPlusB)) {
+  } else if ((match = param.replace(/\s/g, '').match(aNPlusB))) {
     if (match[1]) {
       a = parseInt(match[2], 10);
       if (isNaN(a)) {
@@ -110,13 +112,14 @@ function isTag(el, value) {
 
 function hasSingleClass(el, cls) {
   var className = el.props.className;
-  return className && (className = className.replace(/[\r\t\n]/g, SPACE)) && (SPACE + className + SPACE).indexOf(SPACE + cls + SPACE) > -1;
+  return className && (className = className.replace(/[\r\t\n]/g, SPACE)) &&
+    (SPACE + className + SPACE).indexOf(SPACE + cls + SPACE) > -1;
 }
 
 var matchExpr;
 
 var pseudoFnExpr = {
-  'nth-child': function nthChild(el, param) {
+  'nth-child': function (el, param) {
     var ab = getAb(param);
     var a = ab.a;
     var b = ab.b;
@@ -140,7 +143,7 @@ var pseudoFnExpr = {
     }
     return 0;
   },
-  'nth-last-child': function nthLastChild(el, param) {
+  'nth-last-child': function (el, param) {
     var ab = getAb(param);
     var a = ab.a;
     var b = ab.b;
@@ -167,7 +170,7 @@ var pseudoFnExpr = {
     }
     return 0;
   },
-  'nth-of-type': function nthOfType(el, param) {
+  'nth-of-type': function (el, param) {
     var ab = getAb(param);
     var a = ab.a;
     var b = ab.b;
@@ -195,7 +198,7 @@ var pseudoFnExpr = {
     }
     return 0;
   },
-  'nth-last-of-type': function nthLastOfType(el, param) {
+  'nth-last-of-type': function (el, param) {
     var ab = getAb(param);
     var a = ab.a;
     var b = ab.b;
@@ -223,13 +226,13 @@ var pseudoFnExpr = {
     }
     return 0;
   },
-  not: function not(el, negationArg) {
+  not: function (el, negationArg) {
     return !matchExpr[negationArg.t](el, negationArg.value);
   }
 };
 
 var pseudoIdentExpr = {
-  empty: function empty(el) {
+  empty: function (el) {
     var childNodes = toArray(el.props.children);
     var index = 0;
     var len = childNodes.length - 1;
@@ -245,56 +248,59 @@ var pseudoIdentExpr = {
     }
     return 1;
   },
-  'first-child': function firstChild(el) {
+  'first-child': function (el) {
     return pseudoFnExpr['nth-child'](el, 1);
   },
-  'last-child': function lastChild(el) {
+  'last-child': function (el) {
     return pseudoFnExpr['nth-last-child'](el, 1);
   },
-  'first-of-type': function firstOfType(el) {
+  'first-of-type': function (el) {
     return pseudoFnExpr['nth-of-type'](el, 1);
   },
-  'last-of-type': function lastOfType(el) {
+  'last-of-type': function (el) {
     return pseudoFnExpr['nth-last-of-type'](el, 1);
   },
-  'only-child': function onlyChild(el) {
-    return pseudoIdentExpr['first-child'](el) && pseudoIdentExpr['last-child'](el);
+  'only-child': function (el) {
+    return pseudoIdentExpr['first-child'](el) &&
+      pseudoIdentExpr['last-child'](el);
   },
-  'only-of-type': function onlyOfType(el) {
-    return pseudoIdentExpr['first-of-type'](el) && pseudoIdentExpr['last-of-type'](el);
+  'only-of-type': function (el) {
+    return pseudoIdentExpr['first-of-type'](el) &&
+      pseudoIdentExpr['last-of-type'](el);
   },
-  enabled: function enabled(el) {
+  enabled: function (el) {
     return !el.props.disabled;
   },
-  disabled: function disabled(el) {
+  disabled: function (el) {
     return el.props.disabled;
   },
-  checked: function checked(el) {
+  checked: function (el) {
     var nodeName = el.type;
-    return nodeName === 'input' && el.props.checked || nodeName === 'option' && el.props.selected;
+    return (nodeName === 'input' && el.props.checked) ||
+      (nodeName === 'option' && el.props.selected);
   }
 };
 
 var attributeExpr = {
-  '~=': function _(elValue, value) {
+  '~=': function (elValue, value) {
     if (!value || value.indexOf(' ') > -1) {
       return 0;
     }
     return (' ' + elValue + ' ').indexOf(' ' + value + ' ') !== -1;
   },
-  '|=': function _(elValue, value) {
+  '|=': function (elValue, value) {
     return (' ' + elValue).indexOf(' ' + value + '-') !== -1;
   },
-  '^=': function _(elValue, value) {
+  '^=': function (elValue, value) {
     return value && startsWith(elValue, value);
   },
-  '$=': function $(elValue, value) {
+  '$=': function (elValue, value) {
     return value && endsWith(elValue, value);
   },
-  '*=': function _(elValue, value) {
+  '*=': function (elValue, value) {
     return value && elValue.indexOf(value) !== -1;
   },
-  '=': function _(elValue, value) {
+  '=': function (elValue, value) {
     return elValue === value;
   }
 };
@@ -319,10 +325,10 @@ var relativeExpr = {
 matchExpr = {
   tag: isTag,
   cls: hasSingleClass,
-  id: function id(el, value) {
+  id: function (el, value) {
     return el && el.props.id === value;
   },
-  attrib: function attrib(el, value) {
+  attrib: function (el, value) {
     var name = value.ident;
     var elValue = getAttr(el, name);
     var match = value.match;
@@ -339,15 +345,15 @@ matchExpr = {
     }
     return 0;
   },
-  pseudo: function pseudo(el, value) {
+  pseudo: function (el, value) {
     var fn, fnStr, ident;
-    if (fnStr = value.fn) {
+    if ((fnStr = value.fn)) {
       if (!(fn = pseudoFnExpr[fnStr])) {
         throw new SyntaxError('Syntax error: not support pseudo: ' + fnStr);
       }
       return fn(el, value.param);
     }
-    if (ident = value.ident) {
+    if ((ident = value.ident)) {
       if (!pseudoIdentExpr[ident]) {
         throw new SyntaxError('Syntax error: not support pseudo: ' + ident);
       }
@@ -357,12 +363,13 @@ matchExpr = {
   }
 };
 
+
 parser.lexer.yy = {
-  trim: function trim(s) {
+  trim: function (s) {
     return s.trim();
   },
   unEscape: unEscape,
-  unEscapeStr: function unEscapeStr(str) {
+  unEscapeStr: function (str) {
     return this.unEscape(str.slice(1, -1));
   }
 };
@@ -389,7 +396,7 @@ function singleMatch(el, match) {
     matchSuffixIndex = 0;
     for (; matched && matchSuffixIndex < matchSuffixLen; matchSuffixIndex++) {
       var singleMatchSuffix = matchSuffix[matchSuffixIndex],
-          singleMatchSuffixType = singleMatchSuffix.t;
+        singleMatchSuffixType = singleMatchSuffix.t;
       if (matchExpr[singleMatchSuffixType]) {
         matched &= matchExpr[singleMatchSuffixType](el, singleMatchSuffix.value);
       }
@@ -476,7 +483,7 @@ function findFixedMatchFromHead(el, head) {
 function genId(el) {
   var selectorId;
   if (!(selectorId = el.props[EXPANDO_SELECTOR_KEY])) {
-    selectorId = el.props[EXPANDO_SELECTOR_KEY] = +new Date() + '_' + ++uuid;
+    selectorId = el.props[EXPANDO_SELECTOR_KEY] = (+new Date()) + '_' + (++uuid);
   }
   return selectorId;
 }
@@ -486,7 +493,7 @@ function genId(el) {
 
 var matchSubInternal, matchSub;
 
-matchSubInternal = function (el, match) {
+matchSubInternal = (el, match) => {
   var matchImmediateRet = matchImmediate(el, match);
   if (matchImmediateRet === true) {
     return true;
@@ -503,7 +510,7 @@ matchSubInternal = function (el, match) {
   }
 };
 
-matchSub = function (el, match) {
+matchSub = (el, match) => {
   var selectorId = genId(el);
   var matchKey = selectorId + '_' + (match.order || 0);
   if (matchKey in subMatchesCache) {

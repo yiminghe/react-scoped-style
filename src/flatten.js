@@ -9,7 +9,7 @@ function flatten(element, ret) {
     }
     ret = ret || [];
     ret.push(element);
-    React.Children.forEach(element.props.children, function (c) {
+    React.Children.forEach(element.props.children, (c) => {
       flatten(c, ret);
     });
   }

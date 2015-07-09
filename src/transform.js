@@ -30,7 +30,7 @@ module.exports = function (element, style) {
       rules.forEach(function (r) {
         var selectors = r.selectors;
         var declarations = r.declarations;
-        selectors.forEach(function (selector) {
+        selectors.forEach((selector) =>  {
           var matchedNodes = querySelectorAll(selector, allNodes);
           //console.log(matchedNodes);
           declarations.forEach(function (d) {

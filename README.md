@@ -38,9 +38,9 @@ npm start
 
 http://localhost:8000/examples/
 
-online example: http://react-component.github.io/react-scoped-style/build/examples/
+online example: http://react-component.github.io/react-scoped-style/examples/
 
-http://react-component.github.io/react-scoped-style/build/webpack-examples/
+http://react-component.github.io/react-scoped-style/webpack-examples/
 
 ## docs
 
