@@ -27,3 +27,6 @@ src
 /index.js
 .*
 assets/**/*.less
+docs
+webpack-examples
+*.sh

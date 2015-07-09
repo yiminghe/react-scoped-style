@@ -1,6 +1,6 @@
 {
   "name": "react-scoped-style",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "scope react element by transform external style into inline styles",
   "keywords": [
     "react",
