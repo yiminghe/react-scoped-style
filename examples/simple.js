@@ -12,7 +12,7 @@ webpackJsonp([0,1],[
 	'use strict';
 	
 	var ScopedStyle = __webpack_require__(2);
-	var React = __webpack_require__(4);
+	var React = __webpack_require__(5);
 	var style = ScopedStyle.createStyleSheet('\n.test {\n  color:red;\n  zoom:1.5;\n}\ndiv>span{\n  color:green;\n  zoom:1.5;\n}\n');
 	
 	var html = React.createElement(
@@ -20,7 +20,7 @@ webpackJsonp([0,1],[
 	  null,
 	  React.createElement(
 	    'p',
-	    { className: 'test' },
+	    { className: "test" },
 	    'scope react element by transform external style into inline styles'
 	  ),
 	  React.createElement(
@@ -28,7 +28,7 @@ webpackJsonp([0,1],[
 	    null,
 	    React.createElement(
 	      'a',
-	      { href: 'https://github.com/react-component/react-scoped-style' },
+	      { href: "https://github.com/react-component/react-scoped-style" },
 	      'repo'
 	    )
 	  ),
@@ -97,10 +97,7 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	
-	var ScopedStyle = __webpack_require__(3);
-	ScopedStyle.transformElement = __webpack_require__(5);
-	ScopedStyle.createStyleSheet = __webpack_require__(10);
-	module.exports = ScopedStyle;
+	module.exports = __webpack_require__(3);
 
 /***/ },
 /* 3 */
@@ -108,60 +105,37 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	
-	var _createClass = (function () {
-	  function defineProperties(target, props) {
-	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	    }
-	  }return function (Constructor, protoProps, staticProps) {
-	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	  };
-	})();
+	var ScopedStyle = __webpack_require__(4);
+	ScopedStyle.transformElement = __webpack_require__(6);
+	ScopedStyle.createStyleSheet = __webpack_require__(11);
+	module.exports = ScopedStyle;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 	
-	var _get = function get(_x, _x2, _x3) {
-	  var _again = true;_function: while (_again) {
-	    var object = _x,
-	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
-	      var parent = Object.getPrototypeOf(object);if (parent === null) {
-	        return undefined;
-	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
-	      }
-	    } else if ('value' in desc) {
-	      return desc.value;
-	    } else {
-	      var getter = desc.get;if (getter === undefined) {
-	        return undefined;
-	      }return getter.call(receiver);
-	    }
-	  }
-	};
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	function _classCallCheck(instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
-	  }
-	}
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 	
-	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
-	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) subClass.__proto__ = superClass;
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var React = __webpack_require__(4);
-	var transform = __webpack_require__(5);
-	var cssParse = __webpack_require__(10);
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(5);
+	var transform = __webpack_require__(6);
+	var cssParse = __webpack_require__(11);
 	
 	var ScopedStyle = (function (_React$Component) {
+	  _inherits(ScopedStyle, _React$Component);
+	
 	  function ScopedStyle() {
 	    _classCallCheck(this, ScopedStyle);
 	
 	    _get(Object.getPrototypeOf(ScopedStyle.prototype), 'constructor', this).apply(this, arguments);
 	  }
-	
-	  _inherits(ScopedStyle, _React$Component);
 	
 	  _createClass(ScopedStyle, [{
 	    key: 'render',
@@ -192,20 +166,20 @@ webpackJsonp([0,1],[
 	module.exports = ScopedStyle;
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	module.exports = React;
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var domify = __webpack_require__(6);
-	var flatten = __webpack_require__(7);
-	var querySelectorAll = __webpack_require__(8);
+	var domify = __webpack_require__(7);
+	var flatten = __webpack_require__(8);
+	var querySelectorAll = __webpack_require__(9);
 	
 	function camelCase(str) {
 	  return str.replace(/-\w/g, function (w) {
@@ -254,13 +228,13 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	// make element has dom node interface
-	var React = __webpack_require__(4);
+	var React = __webpack_require__(5);
 	
 	function domify(element, start) {
 	  /*jshint camelcase: false */
@@ -298,12 +272,12 @@ webpackJsonp([0,1],[
 	module.exports = domify;
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var React = __webpack_require__(4);
+	var React = __webpack_require__(5);
 	
 	function flatten(element, ret) {
 	  if (React.isValidElement(element)) {
@@ -322,15 +296,15 @@ webpackJsonp([0,1],[
 	module.exports = flatten;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	// css3 selector engine for react element
 	
-	var parser = __webpack_require__(9);
-	var React = __webpack_require__(4);
+	var parser = __webpack_require__(10);
+	var React = __webpack_require__(5);
 	var ReactChildren = React.Children;
 	
 	var EXPANDO_SELECTOR_KEY = '_ks_data_selector_id_';
@@ -875,7 +849,7 @@ webpackJsonp([0,1],[
 	module.exports = select;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1937,7 +1911,7 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	// https://github.com/reworkcss/css/blob/master/lib/parse/index.js
@@ -2114,10 +2088,10 @@ webpackJsonp([0,1],[
 	    if ('/' != css.charAt(0) || '*' != css.charAt(1)) return;
 	
 	    var i = 2;
-	    while ('' != css.charAt(i) && ('*' != css.charAt(i) || '/' != css.charAt(i + 1))) ++i;
+	    while ("" != css.charAt(i) && ('*' != css.charAt(i) || '/' != css.charAt(i + 1))) ++i;
 	    i += 2;
 	
-	    if ('' === css.charAt(i - 1)) {
+	    if ("" === css.charAt(i - 1)) {
 	      return error('End of comment missing');
 	    }
 	
@@ -2162,7 +2136,7 @@ webpackJsonp([0,1],[
 	    prop = trim(prop[0]);
 	
 	    // :
-	    if (!match(/^:\s*/)) return error('property missing \':\'');
+	    if (!match(/^:\s*/)) return error("property missing ':'");
 	
 	    // val
 	    var val = match(/^((?:'(?:\\'|.)*?'|"(?:\\"|.)*?"|\([^\)]*?\)|[^};])+)/);
@@ -2186,7 +2160,7 @@ webpackJsonp([0,1],[
 	  function declarations() {
 	    var decls = [];
 	
-	    if (!open()) return error('missing \'{\'');
+	    if (!open()) return error("missing '{'");
 	    comments(decls);
 	
 	    // declarations
@@ -2198,7 +2172,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	
-	    if (!close()) return error('missing \'}\'');
+	    if (!close()) return error("missing '}'");
 	    return decls;
 	  }
 	
@@ -2238,10 +2212,10 @@ webpackJsonp([0,1],[
 	
 	    // identifier
 	    var m = match(/^([-\w]+)\s*/);
-	    if (!m) return error('@keyframes missing name');
+	    if (!m) return error("@keyframes missing name");
 	    var name = m[1];
 	
-	    if (!open()) return error('@keyframes missing \'{\'');
+	    if (!open()) return error("@keyframes missing '{'");
 	
 	    var frame;
 	    var frames = comments();
@@ -2250,7 +2224,7 @@ webpackJsonp([0,1],[
 	      frames = frames.concat(comments());
 	    }
 	
-	    if (!close()) return error('@keyframes missing \'}\'');
+	    if (!close()) return error("@keyframes missing '}'");
 	
 	    return pos({
 	      type: 'keyframes',
@@ -2271,11 +2245,11 @@ webpackJsonp([0,1],[
 	    if (!m) return;
 	    var supports = trim(m[1]);
 	
-	    if (!open()) return error('@supports missing \'{\'');
+	    if (!open()) return error("@supports missing '{'");
 	
 	    var style = comments().concat(rules());
 	
-	    if (!close()) return error('@supports missing \'}\'');
+	    if (!close()) return error("@supports missing '}'");
 	
 	    return pos({
 	      type: 'supports',
@@ -2294,11 +2268,11 @@ webpackJsonp([0,1],[
 	
 	    if (!m) return;
 	
-	    if (!open()) return error('@host missing \'{\'');
+	    if (!open()) return error("@host missing '{'");
 	
 	    var style = comments().concat(rules());
 	
-	    if (!close()) return error('@host missing \'}\'');
+	    if (!close()) return error("@host missing '}'");
 	
 	    return pos({
 	      type: 'host',
@@ -2317,11 +2291,11 @@ webpackJsonp([0,1],[
 	    if (!m) return;
 	    var media = trim(m[1]);
 	
-	    if (!open()) return error('@media missing \'{\'');
+	    if (!open()) return error("@media missing '{'");
 	
 	    var style = comments().concat(rules());
 	
-	    if (!close()) return error('@media missing \'}\'');
+	    if (!close()) return error("@media missing '}'");
 	
 	    return pos({
 	      type: 'media',
@@ -2357,7 +2331,7 @@ webpackJsonp([0,1],[
 	
 	    var sel = selector() || [];
 	
-	    if (!open()) return error('@page missing \'{\'');
+	    if (!open()) return error("@page missing '{'");
 	    var decls = comments();
 	
 	    // declarations
@@ -2367,7 +2341,7 @@ webpackJsonp([0,1],[
 	      decls = decls.concat(comments());
 	    }
 	
-	    if (!close()) return error('@page missing \'}\'');
+	    if (!close()) return error("@page missing '}'");
 	
 	    return pos({
 	      type: 'page',
@@ -2388,11 +2362,11 @@ webpackJsonp([0,1],[
 	    var vendor = trim(m[1]);
 	    var doc = trim(m[2]);
 	
-	    if (!open()) return error('@document missing \'{\'');
+	    if (!open()) return error("@document missing '{'");
 	
 	    var style = comments().concat(rules());
 	
-	    if (!close()) return error('@document missing \'}\'');
+	    if (!close()) return error("@document missing '}'");
 	
 	    return pos({
 	      type: 'document',
@@ -2411,7 +2385,7 @@ webpackJsonp([0,1],[
 	    var m = match(/^@font-face\s*/);
 	    if (!m) return;
 	
-	    if (!open()) return error('@font-face missing \'{\'');
+	    if (!open()) return error("@font-face missing '{'");
 	    var decls = comments();
 	
 	    // declarations
@@ -2421,7 +2395,7 @@ webpackJsonp([0,1],[
 	      decls = decls.concat(comments());
 	    }
 	
-	    if (!close()) return error('@font-face missing \'}\'');
+	    if (!close()) return error("@font-face missing '}'");
 	
 	    return pos({
 	      type: 'font-face',
