@@ -1,42 +1,41 @@
-'use strict';
-
-var domify = require('./domify');
-var flatten = require('./flatten');
-var querySelectorAll = require('./css-selector/select');
+import domify from './domify';
+import flatten from './flatten';
+import querySelectorAll from '../vendor/css-selector/select';
 
 function camelCase(str) {
-  return str.replace(/-\w/g, function (w) {
+  return str.replace(/-\w/g, (w) => {
     return w.charAt(1).toUpperCase();
   });
 }
 
-module.exports = function (element, style) {
+export default function transform(element, style) {
   if (!style) {
     return element;
   }
   if (!Array.isArray(style)) {
     style = [style];
   }
-  //console.log(css);
-  //console.log(element);
+  // console.log(css);
+  // console.log(element);
   element = domify(element);
-  //console.log(element);
-  var allNodes = flatten(element);
+  // console.log(element);
+  const allNodes = flatten(element);
 
-  style.forEach(function (s) {
+  style.forEach((s) => {
     if (s) {
-      var stylesheet = s.stylesheet || {};
-      var rules = stylesheet.rules || [];
-      rules.forEach(function (r) {
-        var selectors = r.selectors;
-        var declarations = r.declarations;
-        selectors.forEach((selector) =>  {
-          var matchedNodes = querySelectorAll(selector, allNodes);
-          //console.log(matchedNodes);
-          declarations.forEach(function (d) {
-            var property = camelCase(d.property);
-            matchedNodes.forEach(function (n) {
-              var nodeStyle = n.props.style = n.props.style || {};
+      const stylesheet = s.stylesheet || {};
+      const rules = stylesheet.rules || [];
+      rules.forEach((r) => {
+        const selectors = r.selectors;
+        const declarations = r.declarations;
+        selectors.forEach((selector) => {
+          const matchedNodes = querySelectorAll(selector, allNodes);
+          // console.log(matchedNodes);
+          declarations.forEach((d) => {
+            const property = camelCase(d.property);
+            matchedNodes.forEach((n) => {
+              // TODO clone node and modify style?
+              const nodeStyle = n.props.style;
               if (nodeStyle[property] === undefined) {
                 nodeStyle[property] = d.value;
               }
@@ -48,4 +47,4 @@ module.exports = function (element, style) {
   });
 
   return element;
-};
+}

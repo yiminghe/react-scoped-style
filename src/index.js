@@ -1,6 +1,4 @@
-'use strict';
-
-var ScopedStyle = require('./ScopedStyle');
-ScopedStyle.transformElement = require('./transform');
-ScopedStyle.createStyleSheet = require('../vendor/css-parse');
-module.exports = ScopedStyle;
+import ScopedStyle from './ScopedStyle';
+export default ScopedStyle;
+export transformElement from './transform';
+export createStyleSheet from '../vendor/css-parse';

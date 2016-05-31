@@ -1,8 +1,6 @@
-'use strict';
+import React from 'react';
 
-var React = require('react');
-
-function flatten(element, ret) {
+export default function flatten(element, ret) {
   if (React.isValidElement(element)) {
     if (element.type.__ScopedStyle__ && element.props.scoped) {
       return ret;
@@ -15,5 +13,3 @@ function flatten(element, ret) {
   }
   return ret;
 }
-
-module.exports = flatten;

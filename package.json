@@ -1,53 +1,51 @@
 {
   "name": "react-scoped-style",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "scope react element by transform external style into inline styles",
   "keywords": [
     "react",
     "react-component",
     "react-scoped-css"
   ],
-  "homepage": "http://github.com/react-component/react-scoped-css",
+  "homepage": "http://github.com/yiminghe/react-scoped-css",
   "author": "yiminghe@gmail.com",
   "repository": {
     "type": "git",
-    "url": "git@github.com:react-component/react-scoped-css.git"
+    "url": "git@github.com:yiminghe/react-scoped-css.git"
   },
   "bugs": {
-    "url": "http://github.com/react-component/react-scoped-css/issues"
+    "url": "http://github.com/yiminghe/react-scoped-css/issues"
   },
   "main": "lib/index",
+  "files": [
+    "lib",
+    "vendor"
+  ],
   "licenses": "MIT",
   "config": {
     "port": 8000
   },
   "scripts": {
     "build": "rc-tools run build",
-    "precommit": "rc-tools run precommit",
-    "less": "rc-tools run less",
-    "gh-pages": "sh gh-pages.sh",
-    "history": "rc-tools run history",
-    "start": "node --harmony node_modules/.bin/rc-server",
-    "publish": "rc-tools run tag",
+    "gh-pages": "rc-tools run gh-pages",
+    "start": "rc-tools run server",
+    "pub": "rc-tools run pub",
     "lint": "rc-tools run lint",
-    "saucelabs": "node --harmony node_modules/.bin/rc-tools run saucelabs",
-    "browser-test": "node --harmony node_modules/.bin/rc-tools run browser-test",
-    "browser-test-cover": "node --harmony node_modules/.bin/rc-tools run browser-test-cover"
+    "karma": "rc-tools run karma",
+    "saucelabs": "rc-tools run saucelabs",
+    "test": "rc-tools run test",
+    "chrome-test": "rc-tools run chrome-test",
+    "coverage": "rc-tools run coverage"
   },
   "devDependencies": {
     "expect.js": "0.3.x",
-    "gh-pages": "~0.3.1",
-    "jsx-loader": "~0.13.2",
-    "node-dev": "2.x",
-    "node-libs-browser": "~0.5.2",
-    "precommit-hook": "1.x",
+    "pre-commit": "1.x",
     "raw-loader": "~0.5.1",
-    "rc-server": "3.x",
-    "rc-tools": "3.x",
-    "react": "0.13.x",
-    "webpack": "~1.10.1"
+    "rc-tools": "5.x",
+    "react": "15.x",
+    "react-dom": "15.x"
   },
-  "precommit": [
-    "precommit"
+  "pre-commit": [
+    "lint"
   ]
 }

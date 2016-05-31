@@ -1,25 +1,24 @@
-'use strict';
-
 // make element has dom node interface
-var React = require('react');
+import React from 'react';
 
-function domify(element, start) {
-  /*jshint camelcase: false */
+export default function domify(element, start) {
   start = start || [1];
   if (React.isValidElement(element)) {
-    var order = start[0];
+    const order = start[0];
     start[0] += 1;
-    var children = element.props.children;
-    var lastChild;
-    var newChildren = [];
+    const children = element.props.children;
+    let lastChild;
+    const newChildren = [];
     React.Children.forEach(children, (c) => {
       if (React.isValidElement(c)) {
         c = React.cloneElement(c, {
-          __reactScopedCss__parentNode: element
+          __reactScopedCss__anchor: {
+            __reactScopedCss__parentNode: element,
+            __reactScopedCss__previousSilbling: lastChild,
+          },
         });
-        c.props.__reactScopedCss__previousSilbling = lastChild;
         if (lastChild) {
-          lastChild.props.__reactScopedCss__nextSilbling = c;
+          lastChild.props.__reactScopedCss__anchor.__reactScopedCss__nextSilbling = c;
         }
         newChildren.push(domify(c, start));
         lastChild = c;
@@ -30,10 +29,8 @@ function domify(element, start) {
 
     return React.cloneElement(element, {
       style: element.props.style || {},
-      __reactScopedCss__mountOrder: order
+      __reactScopedCss__mountOrder: order,
     }, ...newChildren);
   }
   return element;
 }
-
-module.exports = domify;

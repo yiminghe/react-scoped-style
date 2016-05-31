@@ -9,18 +9,16 @@ scope react element by transform external style into inline styles
 [![gemnasium deps][gemnasium-image]][gemnasium-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
-[![Sauce Test Status](https://saucelabs.com/buildstatus/react-scoped-style)](https://saucelabs.com/u/react-scoped-style)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/react-scoped-style.svg)](https://saucelabs.com/u/react-scoped-style)
 
 [npm-image]: http://img.shields.io/npm/v/react-scoped-style.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/react-scoped-style
-[travis-image]: https://img.shields.io/travis/react-component/react-scoped-style.svg?style=flat-square
-[travis-url]: https://travis-ci.org/react-component/react-scoped-style
-[coveralls-image]: https://img.shields.io/coveralls/react-component/react-scoped-style.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/react-component/react-scoped-style?branch=master
-[gemnasium-image]: http://img.shields.io/gemnasium/react-component/react-scoped-style.svg?style=flat-square
-[gemnasium-url]: https://gemnasium.com/react-component/react-scoped-style
+[travis-image]: https://img.shields.io/travis/yiminghe/react-scoped-style.svg?style=flat-square
+[travis-url]: https://travis-ci.org/yiminghe/react-scoped-style
+[coveralls-image]: https://img.shields.io/coveralls/yiminghe/react-scoped-style.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/yiminghe/react-scoped-style?branch=master
+[gemnasium-image]: http://img.shields.io/gemnasium/yiminghe/react-scoped-style.svg?style=flat-square
+[gemnasium-url]: https://gemnasium.com/yiminghe/react-scoped-style
 [node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 [download-image]: https://img.shields.io/npm/dm/react-scoped-style.svg?style=flat-square
@@ -38,13 +36,11 @@ npm start
 
 http://localhost:8000/examples/
 
-online example: http://react-component.github.io/react-scoped-style/examples/
-
-http://react-component.github.io/react-scoped-style/webpack-examples/
+online example: http://yiminghe.github.io/react-scoped-style/
 
 ## docs
 
-- [介绍](https://github.com/react-component/react-scoped-style/blob/master/docs/zh-cn/intro.md)
+- [介绍](https://github.com/yiminghe/react-scoped-style/blob/master/docs/zh-cn/intro.md)
 
 
 ## Feature
@@ -62,9 +58,10 @@ http://react-component.github.io/react-scoped-style/webpack-examples/
 ## Usage
 
 ```js
-var ScopedStyle = require('react-scoped-style');
-var React = require('react');
-var style = ScopedStyle.createStyleSheet(`
+import ScopedStyle, { createStyleSheet } from 'react-scoped-style';
+import React from 'react';
+import ReactDOM from 'react-dom';
+var style = createStyleSheet(`
 .test {
   color:red;
   zoom:1.5;
@@ -78,7 +75,7 @@ div>span{
 var html = <div>
   <p className="test">scope react element by transform external style into inline styles</p>
   <p>
-    <a href="https://github.com/react-component/react-scoped-style">repo</a>
+    <a href="https://github.com/yiminghe/react-scoped-style">repo</a>
   </p>
 
   <ScopedStyle style={style}>
@@ -102,7 +99,7 @@ var html = <div>
   </ScopedStyle>
 </div>;
 
-React.render(html, document.getElementById('__react-content'));
+ReactDOM.render(html, document.getElementById('__react-content'));
 ```
 
 ## API
@@ -140,14 +137,20 @@ React.render(html, document.getElementById('__react-content'));
 
 - ReactElement transformElement(root:ReactElement, css:String|ParsedCssResult)
 
-
 ## Test Case
 
-http://localhost:8000/tests/runner.html?coverage
+```
+npm test
+npm run chrome-test
+```
 
 ## Coverage
 
-http://localhost:8000/node_modules/rc-server/node_modules/node-jscover/lib/front-end/jscoverage.html?w=http://localhost:8000/tests/runner.html?coverage
+```
+npm run coverage
+```
+
+open coverage/ dir
 
 ## License
 
